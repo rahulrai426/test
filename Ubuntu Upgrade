@@ -1,0 +1,42 @@
+Ubuntu Upgrade
+
+
+Ubuntu upgrade 14.04 to 16.04
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get install update-manager-core
+sudo do-release-upgrade
+
+if you get below error run this command
+sudo do-release-upgrade -d
+
+Checking for a new Ubuntu release
+No new release found
+
+
+Ubuntu 16.04 to 18.04
+
+sudo apt update && sudo apt upgrade
+
+sudo reboot
+
+sudo do-release-upgrade
+
+
+Ubuntu upgrade 18.04 to 20.4
+
+sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
+sudo do-release-upgrade
+
+
+Ubuntu upgrade 20.4 to 22.4
+
+sudo apt update && sudo apt upgrade -y
+sudo reboot
+lsb_release -a
+sudo apt install update-manager-core
+sudo do-release-upgrade
