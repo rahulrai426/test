@@ -1,0 +1,106 @@
+Resize  disk
+
+
+Rahul:~ air$ ssh insta@172.20.10.6
+insta@172.20.10.6's password: 
+Permission denied, please try again.
+insta@172.20.10.6's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-105-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Wed Apr 24 04:24:43 PM IST 2024
+
+  System load:             0.78369140625
+  Usage of /:              4.7% of 121.99GB
+  Memory usage:            9%
+  Swap usage:              0%
+  Processes:               105
+  Users logged in:         0
+  IPv4 address for enp0s3: 172.20.10.6
+  IPv6 address for enp0s3: 2409:40f2:27:30f5:a00:27ff:fe83:170a
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+Last login: Wed Apr 24 16:24:45 2024 from 172.20.10.5
+insta@insta:~$ lsblk
+NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0                       7:0    0  63.9M  1 loop /snap/core20/2264
+loop1                       7:1    0  38.7M  1 loop /snap/snapd/21465
+loop2                       7:2    0  91.8M  1 loop /snap/lxd/24061
+sda                         8:0    0   250G  0 disk 
+├─sda1                      8:1    0     1M  0 part 
+├─sda2                      8:2    0     1G  0 part /boot
+└─sda3                      8:3    0 246.7G  0 part 
+  └─ubuntu--vg-ubuntu--lv 253:0    0 124.5G  0 lvm  /
+sr0                        11:0    1  1024M  0 rom  
+insta@insta:~$ df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              197M  1.1M  196M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  122G  5.7G  111G   5% /
+tmpfs                              983M     0  983M   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/sda2                          974M  165M  742M  19% /boot
+tmpfs                              197M  4.0K  197M   1% /run/user/1000
+insta@insta:~$ sudo su
+[sudo] password for insta: 
+root@insta:/home/insta# parted /dev/sda
+GNU Parted 3.4
+Using /dev/sda
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) resizepart 3                                                    
+End?  [266GB]?                                                           
+(parted) quit                                                            
+Information: You may need to update /etc/fstab.
+
+root@insta:/home/insta# pvresize /dev/sda3
+  WARNING: Device /dev/sda3 has size of 517430003 sectors which is smaller than corresponding PV size of 522184704 sectors. Was device resized?
+  WARNING: One or more devices used as PVs in VG ubuntu-vg have changed sizes.
+  Physical volume "/dev/sda3" changed
+  1 physical volume(s) resized or updated / 0 physical volume(s) not resized
+root@insta:/home/insta# lvextend /dev/mapper/ubuntu--vg-ubuntu--lv -l+100%FREE
+  Size of logical volume ubuntu-vg/ubuntu-lv changed from 124.50 GiB (31872 extents) to <246.73 GiB (63162 extents).
+  Logical volume ubuntu-vg/ubuntu-lv successfully resized.
+root@insta:/home/insta# DF -H
+DF: command not found
+root@insta:/home/insta# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              197M  1.1M  196M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  122G  5.7G  111G   5% /
+tmpfs                              983M     0  983M   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/sda2                          974M  165M  742M  19% /boot
+tmpfs                              197M  4.0K  197M   1% /run/user/1000
+root@insta:/home/insta# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /; on-line resizing required
+old_desc_blocks = 16, new_desc_blocks = 31
+The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now 64677888 (4k) blocks long.
+
+root@insta:/home/insta# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              197M  1.1M  196M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  243G  5.7G  226G   3% /
+tmpfs                              983M     0  983M   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/sda2                          974M  165M  742M  19% /boot
+tmpfs                              197M  4.0K  197M   1% /run/user/1000
+root@insta:/home/insta# 
+
+
+
+
+
