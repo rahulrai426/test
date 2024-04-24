@@ -1,0 +1,123 @@
+Linux Command
+
+whoami
+Pwd
+cat /etc/os-release
+vi filename for new file and edit previous file
+mkdir for directory creation
+cat  file name for read file
+less read and scroll file
+cp  absoulte path and paste path.  Ex :- cp /root/folder/file   /tmp
+cp -r for directory copy
+mv for move file to another file
+mv also use for file name change
+ln -s for link creation of any file. Ex :-   ln -s /root/folder/file and then alias
+unlink for remove the link
+grep for search any text
+grep -i for shorting with not lower case and uppercase
+tail -f for live log
+tail for last 10 file
+tail 20 for last 20 lines
+head for first 10 files
+wc -l for count
+touch for blank file
+file : file name it will show file type
+Find /
+ls -ld /opt/devopsdir permission checking
+
+chown ansible:devops /opt/devopsdir/. change the ownership for directory. and we can use chown -R for all the file or directory
+
+chmod o-x /opt/devopsdir/. this is for remove excutable permission from other user
+chmod o-r /opt/devopsdir/. this is for remove write permission from other user
+chmod g+w /opt/devopsdir/. this is for add write permission to group 
+
+
+
+ls  :- see all files
+
+ls -l :- see all file list wise
+
+ls -lt :- See all file list and time wise
+
+ls -ltr. :- see all files list reserve order
+
+cut -d: -f1 /etc/passwd
+
+
+file system of linux
+
+Some Important Directions 
+
+Home Directories : /root , /home/username
+User Executable : /bin , /usr/bin, /usr/local/bin
+System Excutable : /sbin , /usr/sbin, /usr/local/sbin
+Other mountPoints : /media , /mnt
+Configuration : /etc
+Temporary Files : /tmp
+Kernels and Bootloader : /boot
+Server Data : /var , /srv
+System information : /proc , /sys
+Shared Libraries : /lib , /usr/lib , /usr/local/lib
+
+
+File information
+
+r => read
+w => write
+x => excute permission
+
+lrwxrwxrwx 1 root root   18 Apr 11 01:39 cmds -> /root/ops/text.txt
+drwxr-xr-x 2 root root 4096 Apr 10 19:16 devops
+drwxr-xr-x 2 root root 4096 Apr 11 01:39 ops
+drwx------ 3 root root 4096 Apr  6 11:06 snap
+-rw-r--r-- 1 root root    9 Apr 10 19:17 text.txt
+
+first is =>filetype
+
+rw- next three is => user
+next three  for group 
+last three for others
+
+ls -ld /opt/devopsdir permission checking
+
+chown ansible:devops /opt/devopsdir/. change the ownership for directory. and we can use chown -R for all the file or directory
+
+chmod o-x /opt/devopsdir/. this is for remove excutable permission from other user
+chmod o-r /opt/devopsdir/. this is for remove write permission from other user
+chmod g+w /opt/devopsdir/. this is for add write permission to group 
+
+
+
+Redirection file
+date > /tmp/sys.txt : save output in any path
+echo '===================================‘ >>/tmp/sys.txt double symbol use for add text and out in redirection file
+
+
+
+
+Users & groups
+
+1. root   Home directory = /root  shell = /bin/bash
+2. Regular user =  insta home directory = /home/username shell = /bin/bash
+3. service ftp, ssh home directory  = /var/ftp etc shell = /sbin/nologin
+
+User creation
+
+1. username = useradd username. and useradd -m jenkins(this is with home directory)
+2. Group = groupadd group name
+3. add to new group  = usermod -aG devops ramesh
+4. change and assign the password to user = passwd ramesh 
+5. switch user : sudo su -p aws
+6. give to sudo access to user : sudo usermod -aG sudo aws
+7. this is check what activity done by user:  lsof -u insta
+8. Del user : userdel aws and if you want to remove home directory also use userdel -r username
+9. group del : groupdel group name
+
+
+
+Viewing Permissions from the command - line
+
+1. File permission may be viewed using ls -l. : ls -l /bin/login
+
+
+
