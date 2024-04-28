@@ -1,0 +1,80 @@
+VProfile Setup
+
+https://github.com/hkhcoder/vprofile-project/tree/main
+clone repo
+
+Go to project under vagrant file and run file
+
+
+
+Setup of the below services
+
+Nginx 
+		Web Service
+
+Tomcat 
+	Application Sever
+RabbitMQ
+	Broker/Queuing Agent
+Memcache
+	DB Caching
+MYSQL
+	SQL Database
+
+
+Setup should be done in below mentioned order
+
+MySQL (Database SVC)
+Memcache (DB Caching SVC)
+RabbitMQ (Broker/Queue SVC)
+Tomcat (Application SVC)
+Nginx (Web SVC)
+
+
+DB setup
+
+Vagrant ssh db01 :- Login to db Server
+
+yum update -y :- update latest
+
+yum install epel-release -y :- download package
+
+yum install git mariadb-server -y :- download db
+
+systemctl start mariadb :- services start
+
+systemctl enable mariadb
+
+systemctl status mariadb
+
+db password
+Admin123
+
+
+Set DB name and users
+
+mysql -u root -padmin123 
+
+create database accounts;
+
+grant all privileges on accounts.* TO 'admin'@'%' identified by 'admin123';
+
+FLUSH PRIVILEGES;
+
+
+Download Source code & Initialize Database
+
+# git clone -b main https://github.com/hkhcoder/vprofile-project.git 
+# cd vprofile-project 
+# mysql -u root -padmin123 accounts < src/main/resources/db_backup.sql 
+# mysql -u root -padmin123 accounts
+
+Restart mariadb-server 
+# systemctl restart mariadb
+
+
+
+
+
+
+
