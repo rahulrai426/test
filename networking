@@ -1,0 +1,82 @@
+Networking 
+
+
+Contents
+
+Components
+OSI Model
+Classification
+Devices
+Home Network
+IP addresses
+Protocols
+DNS & DHCP
+Network Commands
+
+
+What is a computer Network ?
+Communication between two or more network interfaces
+
+Components of computer network
+
+Two or more computers/devices
+Cables are links between the computers
+A network interfacing card(NIC) on each
+Computer
+Switches
+Routers
+Software called operating system (OS)
+
+
+OSI Model
+
+Open Systems Interconnection
+
+
+
+a. People around the world uses computer network to communicate with each other.
+b. For worldwide data communication , system must be developed which are compatible to communicate with each other.
+c. There should be standard communication method & devices.
+d. ISO (International Organization of standardization ) has developed this standard.
+
+ This communication model is called Open system interconnection
+
+ISO-OSI model is a seven layer architecture developed in 1984.
+
+Physical
+Data link
+Network
+Transport
+Session
+Presentation
+Application
+
+The basic elements of a layered model are
+
+a. Services
+b. Protocols
+c. and interfaces
+
+A service is a set of action that a layer offers to another(higher) layer.
+A protocol is a set of rules that a layer uses to exchange information.
+A interface is communication between the layers.
+
+Networking Command
+
+Ifconfig to check IP address 
+ip add show alternative for point 1.
+Change IP address name  vi /etc/hosts
+tracert www.google.com
+netstat -antp and ss -tunlp   and nmap
+dig google.com
+Nslookup www.google.com
+route -n it will show the getaways
+route
+arp. for add in kernel
+mtr www.google.com
+
+ping number of packets
+
+ping <ip> -c <count>
+
+
