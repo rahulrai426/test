@@ -1,0 +1,22 @@
+cd Documents
+mkdir vagrant-vms
+
+cd vagrant-vms
+
+mkdir centos
+
+cd centos
+
+vagrant init eurolinux-vagrant/centos-stream-9
+
+cd vagrant-vms
+
+mkdir ubuntu18
+
+vagrant init ubuntu/bionic64 
+
+cd vagrant-vms
+
+mkdir ubuntu22
+
+vagrant init ubuntu/jammy64
