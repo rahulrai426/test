@@ -1,3 +1,11 @@
+
+Check vagrant commands
+
+vagrant status  : for status
+vagrant box list :- all vms
+vagrant halt :- shut down vagrant
+vagrant destory :- 
+
 cd Documents
 mkdir vagrant-vms
 
