@@ -102,5 +102,10 @@ root@insta:/home/insta#
 
 
 
+IF This coomand not work then lvextend /dev/mapper/ubuntu--vg-ubuntu--lv -l+100%FREE
+
+lvextend -l +100%FREE -r /dev/mapper/ubuntu-var
+
+
 
 
