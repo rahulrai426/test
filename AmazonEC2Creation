@@ -28,3 +28,19 @@ unzip 2128_tween_agency.zip
 cp -r 2128_tween_agency/* /var/www/html/
 sudo systemctl restart apache2
 sudo systemctl status apache2
+
+EBS AWS Elastic Block Store (EBS)
+
+How to mount
+
+1. sudo mkdir /mnt/data
+2. sudo mkfs.ext4 /dev/xvdh
+3. sudo mount /dev/xvdh /mnt/data
+4. sudo blkid /dev/xvdh ---Set Up Automatic Mounting
+5. sudo /etc/fstab
+6. UUID=<UID> /mnt/data ext4 defaults,nofail 0 2
+
+
+
+
+
