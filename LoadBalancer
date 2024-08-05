@@ -1,1 +1,41 @@
+Create one EC2 Intance if not available
+
+Create AMI image from intance Steps below
+  a. select intance 
+  b. Go to Action
+  c. image and templates 
+  d. click on create image
+All the AMI will be available under AMI section
+We can copy AMI to any region
+We can launch intance with AMI
+We can create AMI templates which is available under AMI section
+
+Load Balancer creation step
+
+a. Go to Load Balancer section
+b. click on target groups  ----Target groups are basically group of the intances
+c. Click on create target group
+d. select intances option here
+e. Enter Target group Name like health-tg
+f. Protocol wher the website is running (HTTP and HTTPS)
+g. Health check path is required
+h. Select the intances and click on include as pending below
+i. click on create target group
+
+
+Go to Load Balancer 
+
+a. Click on create load balancer
+b. click Application load balancer and mention load balancer name
+c. Select the security group for load balancer (Create new security group)
+d. select inbound rule ipv4 and ipv6 
+e. select Listeners and routing (Protocol : HTTP and HTTPS --Forwarded to load balancer tag)
+
+
+
+
+
+
+
+
 
