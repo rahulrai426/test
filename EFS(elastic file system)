@@ -1,0 +1,33 @@
+[root@ip-172-31-86-154 html]# vi /etc/fstab 
+[root@ip-172-31-86-154 html]# mount -fav
+/                        : ignored
+b'mount.nfs4: mount point /var/www/html/img does not exist'
+[root@ip-172-31-86-154 html]# vi /etc/fstab 
+[root@ip-172-31-86-154 html]# mount -fav
+/                        : ignored
+/var/www/html/images     : successfully mounted
+
+
+fs-0fea787fddc8dd7f2 efs-mount-point efs _netdev,tls,accesspoint=fsap-0bb0045e1a31ea0c3 0 0
+
+First need to create security group for efs
+
+1. Go to network and security
+2. click on security group
+3. give the name and inbound rule add service type as NFS then allow the intance id and create 
+
+1. Go to efs in amazon services
+2. click on create file system
+3. customized the file system we can give this as per requirement regional / one zone for normal use we can select bursting and general purpose
+4. click on next and mapped the security group which is created to efs with all the zones next next and create the efs 
+5. then create the access point select file system name and create access point
+
+then mount in your machine.
+
+install the efs system
+https://github.com/aws/efs-utils?tab=readme-ov-file#on-other-linux-distributions
+
+vi /etc/fstab
+
+fs-0fea787fddc8dd7f2<file system ida> efs-mount-point efs _netdev,tls,accesspoint=fsap-0bb0045e1a31ea0c3<access point id> 0 0
+
