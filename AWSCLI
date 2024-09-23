@@ -1,0 +1,209 @@
+Documentation
+https://docs.aws.amazon.com/cli/
+
+Need to download awscli
+sudo apt update
+sudo apt install awscli
+aws --version
+
+create acess key for user 
+Login to aws account 
+go to iam user services 
+click on user and create access key 
+
+go to terminal 
+
+aws configure
+WS Access Key ID [None]: AKIA5THREIQRV5EHGNNC
+AWS Secret Access Key [None]: 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
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+Path in terminal
+cat ~/.aws/config
+cat ~/.aws/credentials
+
+check the identity
+aws sts get-caller-identity
+
+OUTPUT:
+
+{
+    "UserId": "AIDA5THREIQR46ENVDQVC",
+    "Account": "934661080099",
+    "Arn": "arn:aws:iam::934661080099:user/awscli"
+}
+
+check how many instances available in your reasion
+
+aws ec2 describe-instances
+
+Create a key pair
+
+aws ec2 create-key-pair --key-name <keypair-Name> --query 'KeyMaterial' --output
+text > <keypair-Name.pem>
+
+Example:
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
+
+Delete a key pair
+
+aws ec2 delete-key-pair --key-name <keypair-Name>
+
+Create a Security Group & Adding Inbound rules
+
+# aws ec2 create-security-group --group-name <security grp Name> --description
+"<Description>"
+# curl https://checkip.amazonaws.com
+# aws ec2 authorize-security-group-ingress --group-id <security group Id> --protocol
+tcp --port <port Number> --cidr <ip address>
+# aws ec2 authorize-security-group-ingress --group-id <security grp Id>--protocol tcp
+--port 22-8000 --cidr 0.0.0.0/0
+
+
+
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# ls
+MyKeyPair.pem  snap
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# cat MyKeyPair.pem 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAlxKMn57aI5zYesII3y4slqJsCDti5pmAh5fKGogz4FYni7Rf
+hfYzmlhCEatrmzHMtBv/E8AeKu/YnyxmIKx9MAJIiBV2T2Wfn83DZ368X2s429Ed
+DTKdfJ+JiKUiyk6VPv6HN3BoX+63asZxeIu4FcT3ETpDe2ZMjefvquBKCkSRKAKR
+FpUTr7TBjCf0tUgHMANxv1kStRKjouXSEoPwmaJ4k9UwIYcsnvl4Mx6RROqG8hQE
+iETvpyK1OsH7ZpAUVWdsyMcHD742QFaRURzO2jqtFEAVz0FtNh7uNZIaf5vmmBOX
+veJl4bzPfOPRTRK7ljQw6Q2/V8QZI+rXIlrw6QIDAQABAoIBAAKE/61l09OGOSIK
+/GTkez/j45NbkjGwW7FnOaqpnNvf8/bjgjhUu9WWJTvwNPI4qWZTlTR6Hsaui1lU
+PzvKRKg5UYZbfUajtj7PCrQ+K9wXiLI50Zc3weKjMoMB5gujtd+AFTc6e7Ml4w83
+0gqloeNTDp/N7fQv55TySk/6P6HeLh6hn8DjZdUKwnZEo+cBTQi1IytZUHm6Xk48
+hnVRzjCaBHT6vkcWdpzrmSdYINjC9ZsJG/YnIy3Vhs4bOVEppzKNoFj5fEn7av/z
+Vgv9WyL1COxSc9YSkNzdhzAn/LkO1L9aCKbx/nYojAVbsOG/ngyZro37qNdawuor
+IH/YBiUCgYEA+9yQd5No3LdMzEPhTq97wEFUQ2IL/rWSt041QSIK2YUTJ77G5d74
+DIqlRADjDhpzDwPBdH/Rid1dKcuBO/6Q3ep35RrLL9U1CjmXW/AFBRcWe1ENUuyf
+G+ZauXrxGfIGMS3tDv4QQqxEs2HQ8gyaX46teTx4tJzTs3WZfDTTrBcCgYEAmY4G
+CP9Fz1fUDHagjFd+Cgikb5jpz5i29NrvpGpwTgaxQ3uJqaBOjSKRFUr+VjjMo0Mt
+FqWWc9kQlC/F6x1J1/rJYDC3Yy5s1fts/6rG9BUT08HwcMk+jldncXciFZ9Bb5Mw
+msn5oALgS3ChdFh6R9XvYGOwuIQ5pO+noAdnav8CgYEAt+W4Zlbvvhjorkzx+e4P
+wbTxvbGdaIFTexxTrhcZLPIJpn+Z4sYG/8FMInczUlzlnhTz8AhUCwHiwF2jIxcg
+16gXmuURbv+SFsEuTybVw320IJ5xyBaVpl1v6PZnjLY25znNWaEQZl46W3AUjGe/
+X/5hk6Af0mCgAuzfAN3hoEkCgYAvjAeYX5r5MgPp/A2Ih0ryxmxMVfgIHQyB0w0j
+RwYRUwcukyE0UfwgvZRZGIiaoCnVX+alPY7RvmPgzs4lGEOWSgRy8YLHhkeTFrBQ
+lkvWpnQmPMY71kS1hKD2RGJceZykdNo3A9V0048qLO0BfqgWeEsP+K5u5BqJVN/9
+sG04dwKBgCB54Mi9BR5IRTsAMnvpVfbob2808CZAB4DPmMCTu4pb6hEuQxmIp8mc
+05NMMljdXZdzrfZbAu/iXKprbwyEo7DqpYcuSQ0qageAVn7++t4ENmu+lnzwVvem
+zOmNY4yIrT1cf/bEi81bVqTsTunimbgN/ZcIim+0iPh9vVzamxbF
+-----END RSA PRIVATE KEY-----
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 create-security-group --group-name my-sg-new --description "My Security Group"
+{
+    "GroupId": "sg-0963cf5f8bffcd592"
+}
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# curl https://checkip.amazonaws.com
+152.58.230.149
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 authorize-security-group-ingress --group-id sg-0963cf5f8bffcd592 --protocol tcp --port 22 --cidr 152.58.230.149/32
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-00e92472ff7319046",
+            "GroupId": "sg-0963cf5f8bffcd592",
+            "GroupOwnerId": "934661080099",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 22,
+            "CidrIpv4": "152.58.230.149/32"
+        }
+    ]
+}
+
+Security Rule Creation
+
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 authorize-security-group-ingress --group-id sg-0963cf5f8bffcd592 --protocol tcp --port 22-8000 --cidr 0.0.0.0/0
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-05784559e02a5791c",
+            "GroupId": "sg-0963cf5f8bffcd592",
+            "GroupOwnerId": "934661080099",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 8000,
+            "CidrIpv4": "0.0.0.0/0"
+        }
+    ]
+
+security Group Creation
+
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 describe-security-groups --group-names
+{
+    "SecurityGroups": [
+        {
+            "Description": "tween-efs-drive",
+            "GroupName": "tween-efs-drive",
+            "IpPermissions": [
+
+instance Creation
+
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 run-instances --image-id ami-0a0e5d9c7acc336f1 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-groups my-sg-new
+
+{
+    "Groups": [],
+    "Instances": [
+        {
+            "AmiLaunchIndex": 0,
+            "ImageId": "ami-0a0e5d9c7acc336f1",
+            "InstanceId": "i-0513dea1222a33149",
+            "InstanceType": "t2.micro",
+            "KeyName": "MyKeyPair",
+            "LaunchTime": "2024-09-23T15:40:15+00:00",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "Placement": {
+                "AvailabilityZone": "us-east-1d",
+                "GroupName": "",
+                "Tenancy": "default"
+            },
+
+Tag to Instance
+aws ec2 create-tags --resources i-0513dea1222a33149 --tags Key=Test,Value=Test
+
+
+Terminate your Instance
+
+aws ec2 terminate-instances --instance-ids  i-0513dea1222a33149
+
+root@rahul-HP-ProBook-440-G8-Notebook-PC:~# aws ec2 terminate-instances --instance-ids  i-0513dea1222a33149
+{
+    "TerminatingInstances": [
+        {
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "InstanceId": "i-0513dea1222a33149",
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+
+Create Launch Template
+# aws ec2 create-launch-template --launch-template-name
+<Name>":[{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Ipv6AddressCount":1,"
+SubnetId":"pe":"<Instance type","TagSpecifications":[{"ResourceType":"instance","
+Tags":[{"Key":"Name","Value":"<value>"}]}]}
+
+aws ec2 delete-launch-template --launch-template-id < template id> --region
+<region>
+
+aws autoscaling create-auto-scaling-group --auto-scaling-group-name <Name> --
+launch-LaunchTemplateId=<template – id > --min-size 2 --max-size 5 --vpc-zoneidentifier "subnet1-id,subnet2-id,subnet3-id"
+
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name < Auto -
+Scaling group Name >
