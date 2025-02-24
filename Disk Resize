@@ -107,5 +107,37 @@ IF This coomand not work then lvextend /dev/mapper/ubuntu--vg-ubuntu--lv -l+100%
 lvextend -l +100%FREE -r /dev/mapper/ubuntu-var
 
 
+Using grow part
+=====================================================================================================================
+
+root@instahms-emiratesclinicsdb:~# growpart /dev/sdba 2
+FAILED: /dev/sdba: does not exist
+root@instahms-emiratesclinicsdb:~# growpart /dev/sda 2
+CHANGED: partition=2 start=4096 old: size=5242875871 end=5242879967 new: size=13631483871,end=13631487967
+root@instahms-emiratesclinicsdb:~# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  6.4T  0 disk 
+├─sda1   8:1    0    1M  0 part 
+└─sda2   8:2    0  6.4T  0 part /
+sr0     11:0    1 1024M  0 rom  
+root@instahms-emiratesclinicsdb:~# resize2fs /dev/sda2
+resize2fs 1.44.1 (24-Mar-2018)
+Filesystem at /dev/sda2 is mounted on /; on-line resizing required
+old_desc_blocks = 313, new_desc_blocks = 813
+The filesystem on /dev/sda2 is now 1703935483 (4k) blocks long.
+
+root@instahms-emiratesclinicsdb:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev             24G     0   24G   0% /dev
+tmpfs           4.8G  1.4M  4.8G   1% /run
+/dev/sda2       6.3T  2.3T  3.8T  38% /
+tmpfs            24G   16K   24G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs            24G     0   24G   0% /sys/fs/cgroup
+tmpfs           4.8G     0  4.8G   0% /run/user/0
+root@instahms-emiratesclinicsdb:~# 
+
+
+
 
 
