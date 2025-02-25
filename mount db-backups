@@ -1,0 +1,66 @@
+ 1936  lsblk
+ 1937  cd /root/
+ 1938  ls
+ 1939  du -sch db-backups/
+ 1940  cat /etc/hms/options 
+ 1941  df -h
+ 1942  lsblk
+ 1943  cd /mnt/
+ 1944  ls
+ 1945  fdisk /dev/sdb
+ 1946  lsblk
+ 1947  fdisk /dev/sdb
+ 1948  lsblk
+ 1949  mkfs.ext4 /dev/sdb1
+ 1950  lsblk
+ 1951  sudo mkdir -p /mnt/backup
+ 1952  sudo mount /dev/sdb1 /mnt/backup/
+ 1953  df -h
+ 1954  blkid
+ 1955  vi /etc/fstab 
+ 1956  df -h
+ 1957  ls
+ 1958  cd /root/db-backups/hms/
+ 1959  l
+ 1960  cd hsmc/
+ 1961  l
+ 1962  ls
+ 1963  cd /root/
+ 1964  ls
+ 1965  screen -S move_backups
+ 1966  cd /mnt/backup/
+ 1967  ls
+ 1968  du -sch db-backups/
+ 1969  exit
+ 1970  ls
+ 1971  du -sch /mnt/backup/db-backups/
+ 1972  df -h
+ 1973  screen -li
+ 1974  screen -x 21156.move_backups
+ 1975  cd /root/
+ 1976  ls
+ 1977  cd /mnt/backup/
+ 1978  ls
+ 1979  rm test 
+ 1980  cd /root/
+ 1981  ln -s /mnt/backup/db-backups db-backups
+ 1982  ls -lh
+ 1983  cd /root/db-backups/hms/hsmc/daily/
+ 1984  l
+ 1985  sdu -sch *
+ 1986  du -sch *
+ 1987  exit
+ 1988  cd
+ 1989  ifconfig
+ 1990  ifconfig ens160
+ 1991  df -h
+ 1992  cd /root/
+ 1993  ls -lh db-backups
+ 1994  cd /mnt/backup/db-backups/hms/hsmc/
+ 1995  ls daily/
+ 1996  ls weekly/
+ 1997  ls monthly/
+ 1998  exit
+ 1999  psql -d hms
+ 2000  exit
+ 2001  history
