@@ -15,3 +15,6 @@ for removing the container follow below step
 stop the docker conatainer :- docker stop <container_name>
 remove container :- docker rm <container_id>
 then remove the docker image :- docker rmi nginx
+
+command line reference
+https://docs.docker.com/reference/cli/docker/
