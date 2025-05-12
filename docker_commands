@@ -18,3 +18,7 @@ then remove the docker image :- docker rmi nginx
 
 command line reference
 https://docs.docker.com/reference/cli/docker/
+
+to check the meta of container : docker inspect <conatiner_name>
+
+for adding the argument docker run -d -P -e MYSQL_ROOT_PASSWORD=mypass mysql:5.7
