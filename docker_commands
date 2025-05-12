@@ -1,0 +1,11 @@
+docker pull <imageName>
+docker ps --for checking the how many containers are running currently
+docker ps -a -- for checking how many containeres are available with all the status
+docker images --for checking how many images are available
+cd /var/lib/docker  --- this is the directory
+cd /var/lib/docker/containers --- all the container files are available in  this.
+Install the nginx container from docker hub and then allow the port and services
+docker run --name myweb -p 7090:80 -d nginx   -- this command means running the docker with self port and routing the traffic on port 80 and name of the container and container name
+if you want to login in container then execute the below command
+  docker exec myweb ls/  -- for checking the directories inside docker
+  docker exec -it myweb /bin/bash   -- for getting into in the docker path --- once you get in to the docker directory you can run linux coomands
