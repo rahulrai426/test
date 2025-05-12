@@ -22,3 +22,10 @@ https://docs.docker.com/reference/cli/docker/
 to check the meta of container : docker inspect <conatiner_name>
 
 for adding the argument docker run -d -P -e MYSQL_ROOT_PASSWORD=mypass mysql:5.7
+
+official images: https://hub.docker.com/search?badges=official
+
+image create with volume
+create directory where you want
+
+docker run --name vprofiledb -d -e MYSQL_ROOT_PASSWORD=mydb -p 3030:3306 -v /root/vprodbdata:/var/lib/mysql mysql:5.7
