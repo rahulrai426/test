@@ -10,3 +10,8 @@ if you want to login in container then execute the below command
   docker exec myweb ls/  -- for checking the directories inside docker
   docker exec -it myweb /bin/bash   -- for getting into in the docker path --- once you get in to the docker directory you can run linux coomands
 if docker exec -it myweb /bin/bash this will not work then try docker exec -it myweb /bin/sh
+docker rmi docker name with tag for deleting the docker images
+for removing the container follow below step
+stop the docker conatainer :- docker stop <container_name>
+remove container :- docker rm <container_id>
+then remove the docker image :- docker rmi nginx
