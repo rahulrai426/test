@@ -33,3 +33,28 @@ image create with volume
 create directory where you want
 
 docker run --name vprofiledb -d -e MYSQL_ROOT_PASSWORD=mydb -p 3030:3306 -v /root/vprodbdata:/var/lib/mysql mysql:5.7
+
+checking the docker volume :- docker volume
+docker volume creation : docker volume create mydbdata
+
+==============================================================================
+set the website on docker with docker file.
+Take the zip file from tooplet.com:-wget https://www.tooplate.com/zip-templates/2136_kool_form_pack.zip
+convent into in tar file :- tar czvf nano.tar.gz
+create the docker file: Dockerfile
+FROM ubuntu:latest
+LABEL "Author"="Rahul"
+LABEL "Project"="nano"
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update
+RUN apt install apache2 git -y
+CMD ["/usr/sbin/apache2ctl", "-D","FOREGROUND"]
+EXPOSE 80
+WORKDIR /var/www/html
+VOLUME /var/log/apache2
+ADD nano.tar.gz /var/www/html
+#COPY ADD nano.tar.gz /var/www/html
+
+then run for starting the container : docker run -d --name nanowebsite -p 9080:80 nanoimage:V2
+
+
