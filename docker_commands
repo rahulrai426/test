@@ -57,4 +57,10 @@ ADD nano.tar.gz /var/www/html
 
 then run for starting the container : docker run -d --name nanowebsite -p 9080:80 nanoimage:V2
 
+now push the image on docker hub
+1. give the accountname/containername ==> rahulrai426/nanoimage
+2. login from terminal : docker login -u rahulrai426
+3. push the image on docker pub : docker push rahulrai426/nanoimage:V2
+4. if fetch this command after removing everything you will get the image from docker hub : docker run -d --name nanowebsite -p 9080:80 rahulrai426/nanoimage:V2
+
 
