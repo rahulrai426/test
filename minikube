@@ -1,0 +1,39 @@
+Installation
+https://chatgpt.com/share/68542f08-e7a0-8005-8d6b-357050394b63
+https://chatgpt.com/share/68542f1e-7690-8005-8b8b-482edcca1299   Error Details
+
+(*Start the minikube  *)
+minikube start --driver=docker
+(*Check the node  *)
+kubectl get nodes
+
+(* deploy test application from documentations :- https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download *)
+kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+
+
+(*Expose the service  *)
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+(*get the service details  *)
+kubectl get services hello-minikube
+
+(* Service check on url *)
+
+minikube service hello-minikube
+
+(* get the images  *)
+
+kubectl get svc
+
+(* To delete image  *)
+
+kubectl delete svc
+(*get the deploy details  *)
+
+kubectl get deploy
+
+(*  to delete deploy  *)
+
+kubectl delete deploy hello-minikube
+
+minikube stop
+minikube delete
