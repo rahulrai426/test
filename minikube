@@ -37,3 +37,26 @@ kubectl delete deploy hello-minikube
 
 minikube stop
 minikube delete
+
+launch ec2 for kops setup
+
+snap install aws-cli --classic
+ssh-keygen
+
+kops install
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+sudo mv kops /usr/local/bin/kops
+
+install kubectl
+apt install kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+
+kops
+
+(*  to create cluster  *)
+kops create cluster --name=kubevpro.rahulbussiness.xyz --state=s3://kopsstate95612 --zones=us-east-1a,us-east-1b --node-count=2 --node-size=t3.small --control-plane-size=t3.medium --dns-zone=kubevpro.rahulbussiness.xyz --node-volume-size=12 --control-plane-volume-size=12 --ssh-public-key ~/.ssh/id_ed25519.pub
+kops update cluster --name=kubevpro.rahulbussiness.xyz --state=s3://kopsstate95612 --yes --admin
+kops validate cluster --name=kubevpro.rahulbussiness.xyz --state=s3://kopsstate95612
+kops delete cluster --name=kubevpro.rahulbussiness.xyz --state=s3://kopsstate95612  --delete the cluster
