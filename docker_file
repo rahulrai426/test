@@ -1,0 +1,5 @@
+docker pull <<image name>> nginx:stable-alpine3.23-perl
+docker ps --running containers
+docker ps -a all the pulled containers
+
+docker run --name myweb -p 7090:80 -d nginx -- run the docker with name port 
