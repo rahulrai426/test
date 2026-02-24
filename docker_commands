@@ -19,6 +19,8 @@ docker inspect nginx  ==> check the docker description in json format
 
 docker logs <container_id or container_name>
 
+docker run -d --name vprodb -e MYSQL_RANDOM_ROOT_PASSWORD=admin@12345 -p 3030:3306 -v mydbdata:/var/lib/mysql mysql:5.7 --this for mount the host machine data directory
+
 https://docs.docker.com/engine/install/ubuntu/ -- Download for ubuntu
 
 command line reference
